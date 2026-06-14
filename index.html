@@ -1,189 +1,1574 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kanchan Bijam | Resume</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f4f8;
-      color: #333;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kanchan Bijam — Web Developer based in Mumbai. Specialising in WordPress, WooCommerce, and business websites that actually work.">
+<title>Kanchan Bijam — Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===================== TOKENS ===================== */
+:root {
+  --bg: #09090f;
+  --surface: #0f0f1a;
+  --surface2: #14141f;
+  --border: rgba(255,255,255,0.07);
+  --text: #e8e8f0;
+  --muted: #7a7a9a;
+  --accent: #7c6dfa;
+  --accent2: #c084fc;
+  --glow: rgba(124,109,250,0.18);
+  --radius: 16px;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
 
-    header {
-      background: brown;
-      color: beige;
-      padding: 30px 20px;
-      text-align: center;
-    }
+/* ===================== RESET ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
+/* ===================== SCROLLBAR ===================== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
 
-    header p {
-      font-size: 1rem;
-      margin-top: 8px;
-    }
+/* ===================== UTILITY ===================== */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+.section { padding: 120px 0; }
+.section-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  padding: 6px 14px;
+  border: 1px solid rgba(124,109,250,0.3);
+  border-radius: 100px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.section-sub {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 540px;
+  line-height: 1.75;
+}
+.gradient-text {
+  background: linear-gradient(135deg, #a78bfa, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-    .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
+/* ===================== NAV ===================== */
+#nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: rgba(9,9,15,0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  transition: all 0.3s ease;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-size: 0.875rem;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 8px 20px;
+  background: var(--accent);
+  border-radius: 100px;
+  color: white;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; }
+.nav-hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
 
-    section {
-      margin-bottom: 30px;
-    }
+/* ===================== HERO ===================== */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 120px;
+}
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124,109,250,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,109,250,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-blob {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(ellipse, rgba(124,109,250,0.12) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 820px; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  background: rgba(124,109,250,0.1);
+  border: 1px solid rgba(124,109,250,0.25);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: var(--accent2);
+  margin-bottom: 36px;
+}
+.hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent2); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(1.4);} }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+}
+.hero-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  color: var(--muted);
+  max-width: 560px;
+  margin-bottom: 44px;
+  line-height: 1.8;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 72px; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: white;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 30px rgba(124,109,250,0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(124,109,250,0.4); }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: 0.95rem;
+  color: var(--text);
+  background: rgba(255,255,255,0.03);
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-secondary:hover { border-color: rgba(124,109,250,0.4); background: rgba(124,109,250,0.06); }
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.stat-val {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, #a78bfa, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 4px;
+  letter-spacing: 0.05em;
+}
 
-    h2 {
-      color: brown;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
-      margin-bottom: 15px;
-    }
+/* ===================== ABOUT STRIP ===================== */
+#about-strip {
+  padding: 64px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-strip-inner {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.about-photo-wrap {
+  position: relative;
+}
+.about-photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 50%;
+  z-index: 0;
+}
+.about-photo {
+  width: 194px;
+  height: 194px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  position: relative;
+  z-index: 1;
+  border: 4px solid var(--bg);
+}
+.about-text h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.about-text p { color: var(--muted); line-height: 1.8; max-width: 680px; font-size: 0.98rem; }
+.about-text p + p { margin-top: 12px; }
 
-    ul {
-      padding-left: 20px;
-    }
+/* ===================== PROJECTS ===================== */
+#projects { background: var(--surface); }
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 7px 18px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: transparent;
+  transition: all 0.2s;
+}
+.filter-btn.active, .filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(124,109,250,0.08);
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+.project-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+.project-card:hover {
+  border-color: rgba(124,109,250,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.project-card-preview {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  background: var(--surface2);
+}
+.project-card-preview iframe {
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  transform-origin: top left;
+  border: none;
+  pointer-events: none;
+}
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(9,9,15,0.95));
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.project-card:hover .project-overlay { opacity: 1; }
+.visit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: white;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.visit-btn:hover { opacity: 0.85; }
+.project-card-body { padding: 24px; }
+.project-industry {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.project-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.project-desc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  background: rgba(124,109,250,0.08);
+  border: 1px solid rgba(124,109,250,0.15);
+  color: var(--muted);
+}
+/* Mockup previews for projects without live embeds */
+.mock-preview {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.mock-bar {
+  height: 28px;
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.mock-dot { width: 8px; height: 8px; border-radius: 50%; }
+.mock-body { flex: 1; display: flex; flex-direction: column; padding: 12px; gap: 8px; }
+.mock-h { height: 14px; border-radius: 4px; background: rgba(255,255,255,0.12); }
+.mock-p { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.06); }
+.mock-btn-row { display: flex; gap: 8px; margin-top: 4px; }
+.mock-btn-sm { height: 24px; width: 70px; border-radius: 12px; background: rgba(124,109,250,0.3); }
 
-    .info, .skills, .certificates, .soft-skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+/* ===================== CASE STUDIES ===================== */
+#case-studies { background: var(--bg); }
+.case-list { display: flex; flex-direction: column; gap: 64px; }
+.case-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding-bottom: 64px;
+  border-bottom: 1px solid var(--border);
+}
+.case-item:last-child { border-bottom: none; padding-bottom: 0; }
+.case-item.reverse { direction: rtl; }
+.case-item.reverse > * { direction: ltr; }
+.case-visual {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  aspect-ratio: 16/10;
+  position: relative;
+}
+.case-mock {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.case-mock-bar {
+  height: 32px;
+  background: #111120;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 7px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+}
+.case-mock-body { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.case-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 12px;
+}
+.case-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.case-story p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+.case-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+.case-pillar {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(124,109,250,0.04);
+}
+.case-pillar-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.case-pillar-val { font-size: 0.85rem; font-weight: 500; }
+.case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--accent);
+  border-bottom: 1px solid rgba(124,109,250,0.3);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.case-link:hover { border-color: var(--accent); }
 
-    .info div,
-    .skills div,
-    .certificates div,
-    .soft-skills div {
-      background: #e0f0ff;
-      padding: 10px 15px;
-      border-radius: 6px;
-      flex-grow: 1;
-      flex-basis: 200px;
-    }
+/* ===================== PROCESS ===================== */
+#process { background: var(--surface); }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 2px;
+  margin-top: 60px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.process-step {
+  padding: 32px 24px;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  transition: background 0.3s;
+  position: relative;
+}
+.process-step:last-child { border-right: none; }
+.process-step:hover { background: rgba(124,109,250,0.05); }
+.process-num {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(124,109,250,0.4);
+  margin-bottom: 16px;
+}
+.process-icon { font-size: 1.6rem; margin-bottom: 12px; }
+.process-name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.process-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
 
-    a {
-      color: #003366;
-      text-decoration: none;
-    }
+/* ===================== TOOLS ===================== */
+#tools { background: var(--bg); }
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+  margin-top: 52px;
+}
+.tool-card {
+  padding: 22px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-align: center;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+  cursor: default;
+}
+.tool-card:hover {
+  border-color: rgba(124,109,250,0.4);
+  background: rgba(124,109,250,0.06);
+  transform: translateY(-3px);
+}
+.tool-icon { font-size: 1.8rem; margin-bottom: 10px; }
+.tool-name { font-size: 0.82rem; font-weight: 500; color: var(--text); }
+.tool-cat { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
 
-    .project-placeholder {
-      font-style: italic;
-      color: #777;
-    }
+/* ===================== EXPERIENCE ===================== */
+#experience { background: var(--surface); }
+.exp-list { display: flex; flex-direction: column; gap: 28px; margin-top: 52px; }
+.exp-item {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 32px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.3s;
+}
+.exp-item:hover { border-color: rgba(124,109,250,0.3); }
+.exp-date { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+.exp-role {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.exp-company { font-size: 0.85rem; color: var(--accent); margin-bottom: 14px; }
+.exp-points { list-style: none; }
+.exp-points li {
+  font-size: 0.875rem;
+  color: var(--muted);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+  padding-left: 16px;
+  position: relative;
+}
+.exp-points li:last-child { border-bottom: none; }
+.exp-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
 
-    footer {
-      background: brown;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-      font-size: 0.9rem;
-    }
+/* ===================== CONTACT ===================== */
+#contact {
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+.contact-blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(124,109,250,0.1) 0%, transparent 70%);
+  bottom: -200px;
+  right: -100px;
+  pointer-events: none;
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field-wrap { display: flex; flex-direction: column; gap: 6px; }
+.field-wrap label { font-size: 0.8rem; color: var(--muted); }
+.field-wrap input, .field-wrap textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+.field-wrap input:focus, .field-wrap textarea:focus {
+  border-color: rgba(124,109,250,0.5);
+}
+.contact-links { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+.contact-link-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.3s;
+  text-decoration: none;
+}
+.contact-link-item:hover { border-color: rgba(124,109,250,0.3); }
+.contact-link-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(124,109,250,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.contact-link-text span { display: block; }
+.contact-link-text .clt-label { font-size: 0.75rem; color: var(--muted); }
+.contact-link-text .clt-val { font-size: 0.9rem; font-weight: 500; }
 
-    @media screen and (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
+/* ===================== FOOTER ===================== */
+footer {
+  padding: 28px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ===================== MOBILE NAV OVERLAY ===================== */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(9,9,15,0.97);
+  z-index: 99;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--accent); }
+.mobile-close {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  font-size: 1.5rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  #nav { padding: 12px 20px; gap: 0; justify-content: space-between; width: calc(100% - 32px); }
+  .about-strip-inner { grid-template-columns: 1fr; text-align: center; }
+  .about-photo-wrap { margin: 0 auto; width: fit-content; }
+  .case-item { grid-template-columns: 1fr; }
+  .case-item.reverse { direction: ltr; }
+  .contact-inner { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .exp-item { grid-template-columns: 1fr; gap: 8px; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); }
+  .process-step { border-right: 1px solid var(--border); }
+}
+@media (max-width: 600px) {
+  .section { padding: 80px 0; }
+  .hero-stats { gap: 28px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .case-pillars { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Kanchan Bijam</h1>
-    <p>Computer Science Student | Tech Enthusiast | Aspiring Intern</p>
-  </header>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" id="mobileClose">✕</span>
+  <a href="#projects" onclick="closeMobile()">Work</a>
+  <a href="#case-studies" onclick="closeMobile()">Projects</a>
+  <a href="#tools" onclick="closeMobile()">Tools</a>
+  <a href="#experience" onclick="closeMobile()">Experience</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
 
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <span class="nav-logo">KB.</span>
+  <ul class="nav-links">
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#case-studies">Projects</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#experience">Experience</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's talk</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-blob"></div>
   <div class="container">
-    <section>
-      <h2>Contact</h2>
-      <div class="info">
-        <div>📍 Hanuman Nagar, Kandivali East, Mumbai</div>
-        <div>📞 <a href="tel:+919967029332">9967029332</a></div>
-        <div>✉️ <a href="mailto:bijam64@gmail.com">bijam64@gmail.com</a></div>
-        <div>🔗 <a href="https://www.linkedin.com/in/kanchan-bijam-301b102a3" target="_blank">LinkedIn Profile</a></div>
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span></span>
+        Available for new projects — Mumbai, India
       </div>
-    </section>
-
-    <section>
-      <h2>About Me</h2>
-      <p>
-        A driven Computer Science student passionate about learning, problem-solving, and growing in the tech world. Currently seeking internship opportunities to apply my skills, collaborate with teams, and contribute to real-world projects.
+      <h1 class="hero-title reveal">
+        Websites that<br>
+        <span class="gradient-text">businesses use,</span><br>
+        not just own.
+      </h1>
+      <p class="hero-subtitle reveal">
+        I'm Kanchan Bijam — a web developer who builds and manages live client websites. From fintech platforms to e-commerce stores, each project I deliver has a real business on the other side of it.
       </p>
-    </section>
-
-    <section>
-      <h2>Education</h2>
-      <ul>
-        <li><strong>SSC</strong> – MLRT Gala Pioneer English School, Mumbai (2021) – 77.80%</li>
-        <li><strong>HSC</strong> – Thakur Vidya Mandir Junior College, Mumbai (2023) – 57.50%</li>
-        <li><strong>BSc in Computer Science</strong> – Patkar Varde College, Mumbai University (2023–2026)</li>
-        <ul>
-          <li>Semester 1: 7.59 SGPI</li>
-          <li>Semester 2: 8.14 SGPI</li>
-          <li>Semester 3: 7.86 SGPI</li>
-          <li>Semester 4: 8.18 SGPI</li>
-        </ul>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Experience</h2>
-      <p><strong>Virtual Assistant</strong> – Hire My Assistance, Goregaon (Sep 2024 – May 2025)</p>
-      <ul>
-        <li>Took initiative to gain office experience and financial independence </li>
-      <ul>
-        <li>Supported clients with daily operational tasks and queries.</li>
-        <li>Built communication and time-management skills while balancing work and studies.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Technical Skills</h2>
-      <div class="skills">
-        <div>Python</div>
-        <div>HTML</div>
-        <div>MySQL</div>
-        <div>GitHub</div>
-        <div>VS Code</div>
-        <div>Google Workspace</div>
-        <div>Canva</div>
-        <div>Data Structures</div>
-        <div>Basic Python Automation</div>
+      <div class="hero-actions reveal">
+        <a href="#projects" class="btn-primary">
+          See my work
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn-secondary">Get in touch</a>
       </div>
-    </section>
-
-    <section>
-      <h2>Certificates</h2>
-      <div class="certificates">
-        <div>Bootstrap – 85%</div>
-        <div>R Programming – 90%</div>
-        <div>Linux – 80%</div>
-        <div>Java – 90%</div>
+      <div class="hero-stats reveal">
+        <div>
+          <div class="stat-val" data-target="25">0</div>
+          <div class="stat-label">Live client websites</div>
+        </div>
+        <div>
+          <div class="stat-val" data-target="5">0</div>
+          <div class="stat-label">Industries served</div>
+        </div>
+        <div>
+          <div class="stat-val" data-target="7">0</div>
+          <div class="stat-label">Months delivering</div>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section>
-      <h2>Soft Skills</h2>
-      <div class="soft-skills">
-        <div>Professionalism</div>
-        <div>Team Collaboration</div>
-        <div>Competitive Spirit</div>
-        <div>Problem Solving</div>
-        <div>Initiative-Taker</div>
-        <div>Communication</div>
+<!-- ABOUT STRIP -->
+<div id="about-strip">
+  <div class="container">
+    <div class="about-strip-inner reveal">
+      <div class="about-photo-wrap">
+        <img src="IMG_0351.JPG" alt="Kanchan Bijam" class="about-photo" onerror="this.style.background='linear-gradient(135deg,#a78bfa,#818cf8)';this.src='';this.alt='KB'">
       </div>
-    </section>
+      <div class="about-text">
+        <h2>Building things that work,<br>for people who need them to.</h2>
+        <p>I'm a CS graduate from Mumbai, currently working as a web developer at ILoopworld. My day-to-day is less about writing elegant abstractions and more about solving the actual problem a business owner has — their shop isn't converting, their booking form is broken, their CMS is a nightmare.</p>
+        <p>I've built and managed 25+ live client websites across industries including trading, healthcare, e-commerce, coaching, and investigation services. I also build automation workflows and Android apps when the problem calls for it.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-    
-  <footer>
-    &copy; 2025 Kanchan Bijam
-  </footer>
+<!-- FEATURED WORK -->
+<section id="projects" class="section">
+  <div class="container">
+    <div class="projects-header">
+      <div>
+        <span class="section-label">Featured Work</span>
+        <h2 class="section-title">Live client websites</h2>
+        <p class="section-sub">Every project below is live, for a real business, with real users visiting it.</p>
+      </div>
+      <div class="filter-tabs" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="fintech">Fintech</button>
+        <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+        <button class="filter-btn" data-filter="coaching">Coaching</button>
+        <button class="filter-btn" data-filter="healthcare">Healthcare</button>
+        <button class="filter-btn" data-filter="services">Services</button>
+      </div>
+    </div>
 
+    <div class="projects-grid" id="projectsGrid">
+
+      <!-- CallFX -->
+      <article class="project-card reveal" data-category="fintech">
+        <div class="project-card-preview">
+          <div class="mock-preview" style="background:#050a1a;">
+            <div class="mock-bar" style="background:#080f24;">
+              <div class="mock-dot" style="background:#ff5f57;"></div>
+              <div class="mock-dot" style="background:#febc2e;"></div>
+              <div class="mock-dot" style="background:#28c840;"></div>
+              <div style="flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;margin-left:8px;"></div>
+            </div>
+            <div class="mock-body" style="background:#060d20;">
+              <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px;">
+                <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);"></div>
+                <div>
+                  <div class="mock-h" style="width:80px;height:10px;background:rgba(255,255,255,0.18);"></div>
+                  <div class="mock-p" style="width:60px;margin-top:4px;"></div>
+                </div>
+              </div>
+              <div style="height:56px;border-radius:10px;background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(29,78,216,0.1));border:1px solid rgba(59,130,246,0.2);margin-bottom:8px;"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+                <div style="height:40px;border-radius:8px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);"></div>
+                <div style="height:40px;border-radius:8px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);"></div>
+                <div style="height:40px;border-radius:8px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <a href="https://callfx.com/" target="_blank" rel="noopener" class="visit-btn">Visit site ↗</a>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-industry">Fintech · Trading</div>
+          <h3 class="project-name">CallFX Trading</h3>
+          <p class="project-desc">A full-featured forex and crypto trading information platform covering forex pairs, commodities, indices, and educational resources. Structured for compliance-sensitive financial content with a clear account-type hierarchy.</p>
+          <div class="project-tags">
+            <span class="tag">WordPress</span>
+            <span class="tag">Elementor</span>
+            <span class="tag">Finance</span>
+            <span class="tag">Multi-page</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sohent -->
+      <article class="project-card reveal" data-category="ecommerce">
+        <div class="project-card-preview">
+          <div class="mock-preview" style="background:#fafaf7;">
+            <div class="mock-bar" style="background:#f3f3ee;">
+              <div class="mock-dot" style="background:#ff5f57;"></div>
+              <div class="mock-dot" style="background:#febc2e;"></div>
+              <div class="mock-dot" style="background:#28c840;"></div>
+              <div style="flex:1;height:8px;background:rgba(0,0,0,0.06);border-radius:4px;margin-left:8px;"></div>
+            </div>
+            <div class="mock-body" style="background:#fafaf7;">
+              <div style="text-align:center;padding:6px 0;">
+                <div style="width:60px;height:10px;background:#2a5f2a;border-radius:4px;margin:0 auto 6px;"></div>
+                <div style="width:100px;height:6px;background:rgba(0,0,0,0.1);border-radius:3px;margin:0 auto;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px;">
+                <div style="height:52px;border-radius:8px;background:rgba(42,95,42,0.08);border:1px solid rgba(42,95,42,0.12);"></div>
+                <div style="height:52px;border-radius:8px;background:rgba(139,90,43,0.08);border:1px solid rgba(139,90,43,0.12);"></div>
+                <div style="height:52px;border-radius:8px;background:rgba(212,160,23,0.08);border:1px solid rgba(212,160,23,0.12);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <a href="https://www.sohent.in/" target="_blank" rel="noopener" class="visit-btn">Visit site ↗</a>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-industry">E-Commerce · Natural Foods</div>
+          <h3 class="project-name">Sohent — Natural Essentials</h3>
+          <p class="project-desc">An organic e-commerce store selling cold-pressed oils, premium spices, and seeds. Built with WooCommerce including cart, checkout, and a promotional discount system activated on the first order. The design matches the clean, natural identity of the brand.</p>
+          <div class="project-tags">
+            <span class="tag">WordPress</span>
+            <span class="tag">WooCommerce</span>
+            <span class="tag">E-Commerce</span>
+            <span class="tag">Slider Revolution</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- NexTTStep Coach -->
+      <article class="project-card reveal" data-category="coaching">
+        <div class="project-card-preview">
+          <div class="mock-preview" style="background:#0f1b2d;">
+            <div class="mock-bar" style="background:#0a1520;">
+              <div class="mock-dot" style="background:#ff5f57;"></div>
+              <div class="mock-dot" style="background:#febc2e;"></div>
+              <div class="mock-dot" style="background:#28c840;"></div>
+              <div style="flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;margin-left:8px;"></div>
+            </div>
+            <div class="mock-body" style="background:#0f1b2d;">
+              <div class="mock-h" style="width:120px;height:12px;background:rgba(255,255,255,0.2);margin-bottom:6px;"></div>
+              <div class="mock-p" style="width:80%;"></div>
+              <div class="mock-p" style="width:60%;margin-top:4px;"></div>
+              <div class="mock-btn-row" style="margin-top:10px;">
+                <div class="mock-btn-sm" style="background:rgba(59,130,246,0.4);"></div>
+                <div class="mock-btn-sm" style="background:rgba(255,255,255,0.08);width:50px;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;">
+                <div style="height:36px;border-radius:8px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);"></div>
+                <div style="height:36px;border-radius:8px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <a href="https://nexttstepcoach.com/" target="_blank" rel="noopener" class="visit-btn">Visit site ↗</a>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-industry">Coaching · Career Development</div>
+          <h3 class="project-name">NexTTStep Coach</h3>
+          <p class="project-desc">A career coaching website for a certified professional coach offering resume building and career guidance services. Designed to build immediate trust with visitors, with clear service pages, a contact form, and calls to action that convert browsers into enquiries.</p>
+          <div class="project-tags">
+            <span class="tag">WordPress</span>
+            <span class="tag">Elementor</span>
+            <span class="tag">Services</span>
+            <span class="tag">Lead Gen</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ranade Eye Care -->
+      <article class="project-card reveal" data-category="healthcare">
+        <div class="project-card-preview">
+          <div class="mock-preview" style="background:#f0f7ff;">
+            <div class="mock-bar" style="background:#e8f2ff;">
+              <div class="mock-dot" style="background:#ff5f57;"></div>
+              <div class="mock-dot" style="background:#febc2e;"></div>
+              <div class="mock-dot" style="background:#28c840;"></div>
+              <div style="flex:1;height:8px;background:rgba(0,0,0,0.06);border-radius:4px;margin-left:8px;"></div>
+            </div>
+            <div class="mock-body" style="background:#f0f7ff;">
+              <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;">
+                <div style="width:28px;height:28px;border-radius:50%;background:#1a6bc4;"></div>
+                <div>
+                  <div style="width:80px;height:8px;background:rgba(26,107,196,0.3);border-radius:3px;"></div>
+                </div>
+              </div>
+              <div style="height:40px;border-radius:6px;background:linear-gradient(135deg,rgba(26,107,196,0.12),rgba(0,150,255,0.08));border:1px solid rgba(26,107,196,0.15);margin-bottom:8px;"></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                <div style="height:32px;border-radius:6px;background:rgba(26,107,196,0.08);"></div>
+                <div style="height:32px;border-radius:6px;background:rgba(26,107,196,0.08);"></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <a href="https://ranadeyecare.com/" target="_blank" rel="noopener" class="visit-btn">Visit site ↗</a>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-industry">Healthcare · Ophthalmology</div>
+          <h3 class="project-name">Ranade Super-Speciality Eye Centre</h3>
+          <p class="project-desc">A medical website for a speciality eye hospital covering squint treatment, LASIK surgery, cataract procedures, and pediatric ophthalmology. The site serves dual purpose — informing prospective patients and establishing the clinic's credibility in highly specialised care.</p>
+          <div class="project-tags">
+            <span class="tag">WordPress</span>
+            <span class="tag">Healthcare</span>
+            <span class="tag">Medical SEO</span>
+            <span class="tag">Multi-specialty</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Jackal Detective Agency -->
+      <article class="project-card reveal" data-category="services">
+        <div class="project-card-preview">
+          <div class="mock-preview" style="background:#0a0a0a;">
+            <div class="mock-bar" style="background:#111111;">
+              <div class="mock-dot" style="background:#ff5f57;"></div>
+              <div class="mock-dot" style="background:#febc2e;"></div>
+              <div class="mock-dot" style="background:#28c840;"></div>
+              <div style="flex:1;height:8px;background:rgba(255,255,255,0.05);border-radius:4px;margin-left:8px;"></div>
+            </div>
+            <div class="mock-body" style="background:#0a0a0a;">
+              <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#d97706);margin-bottom:8px;"></div>
+              <div class="mock-h" style="width:110px;background:rgba(245,158,11,0.3);height:11px;margin-bottom:4px;"></div>
+              <div class="mock-p" style="width:80%;background:rgba(255,255,255,0.07);"></div>
+              <div class="mock-p" style="width:55%;background:rgba(255,255,255,0.05);margin-top:4px;"></div>
+              <div style="margin-top:10px;width:80px;height:22px;border-radius:100px;background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.3);"></div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <a href="https://thejackaldetectiveagency.com/" target="_blank" rel="noopener" class="visit-btn">Visit site ↗</a>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-industry">Professional Services · Investigation</div>
+          <h3 class="project-name">The Jackal Detective Agency</h3>
+          <p class="project-desc">A website for a private detective agency — one of the more uncommon briefs in the industry. The site conveys discretion and professionalism while making it easy for potential clients to get in touch. Currently in active development with a live maintenance page.</p>
+          <div class="project-tags">
+            <span class="tag">WordPress</span>
+            <span class="tag">CMP Plugin</span>
+            <span class="tag">Services</span>
+            <span class="tag">Branding</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- NextStep App -->
+      <article class="project-card reveal" data-category="services">
+        <div class="project-card-preview">
+          <div class="mock-preview" style="background:#0f172a;">
+            <div class="mock-bar" style="background:#0a1020;">
+              <div class="mock-dot" style="background:#ff5f57;"></div>
+              <div class="mock-dot" style="background:#febc2e;"></div>
+              <div class="mock-dot" style="background:#28c840;"></div>
+              <div style="flex:1;height:8px;background:rgba(255,255,255,0.06);border-radius:4px;margin-left:8px;"></div>
+            </div>
+            <div class="mock-body" style="background:#0f172a;flex-direction:row;gap:10px;align-items:flex-start;">
+              <div style="width:56px;height:100%;border-radius:8px;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.2);flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:8px;">
+                <div style="width:24px;height:24px;border-radius:6px;background:rgba(99,102,241,0.4);"></div>
+                <div style="width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,0.06);"></div>
+                <div style="width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,0.06);"></div>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+                <div style="height:20px;border-radius:6px;background:rgba(99,102,241,0.15);"></div>
+                <div style="height:14px;border-radius:4px;background:rgba(255,255,255,0.07);width:70%;"></div>
+                <div style="height:14px;border-radius:4px;background:rgba(255,255,255,0.05);width:55%;"></div>
+                <div style="height:26px;border-radius:8px;background:rgba(99,102,241,0.2);margin-top:4px;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <a href="https://github.com/kanchan12285/NextStep-App" target="_blank" rel="noopener" class="visit-btn">View on GitHub ↗</a>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-industry">Mobile App · EdTech</div>
+          <h3 class="project-name">NextStep — Android Learning App</h3>
+          <p class="project-desc">An Android learning tracker built with Kotlin that includes mini-games and a full Firebase backend. Users can sign in, track their learning progress, and stay engaged through game mechanics. Designed and developed the entire UI independently.</p>
+          <div class="project-tags">
+            <span class="tag">Kotlin</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">Android</span>
+            <span class="tag">Firestore</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies" class="section">
+  <div class="container">
+    <span class="section-label reveal">Project Stories</span>
+    <h2 class="section-title reveal">How each project came together</h2>
+    <p class="section-sub reveal">A closer look at three projects — the brief, the approach, and how it got built.</p>
+
+    <div class="case-list" style="margin-top:64px;">
+
+      <!-- Case 1: CallFX -->
+      <div class="case-item reveal">
+        <div class="case-visual">
+          <div class="case-mock">
+            <div class="case-mock-bar">
+              <div class="mock-dot" style="background:#ff5f57;"></div>
+              <div class="mock-dot" style="background:#febc2e;"></div>
+              <div class="mock-dot" style="background:#28c840;"></div>
+              <div style="margin-left:10px;font-size:0.72rem;color:rgba(255,255,255,0.3);">callfx.com</div>
+            </div>
+            <div class="case-mock-body" style="background:#060d20;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+                <div style="width:70px;height:10px;background:rgba(59,130,246,0.4);border-radius:4px;"></div>
+                <div style="display:flex;gap:6px;">
+                  <div style="width:50px;height:22px;border-radius:100px;background:rgba(59,130,246,0.2);border:1px solid rgba(59,130,246,0.3);"></div>
+                  <div style="width:60px;height:22px;border-radius:100px;background:rgba(59,130,246,0.5);"></div>
+                </div>
+              </div>
+              <div style="height:64px;border-radius:10px;background:linear-gradient(135deg,rgba(59,130,246,0.08),transparent);border:1px solid rgba(59,130,246,0.12);margin-bottom:10px;display:flex;align-items:center;justify-content:center;">
+                <div style="width:60%;height:10px;background:rgba(255,255,255,0.12);border-radius:4px;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">
+                <div style="height:40px;border-radius:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.15);"></div>
+                <div style="height:40px;border-radius:8px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.15);"></div>
+                <div style="height:40px;border-radius:8px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);"></div>
+                <div style="height:40px;border-radius:8px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-info">
+          <span class="case-label">Fintech · CallFX</span>
+          <h3 class="case-title">A trading platform that needed to feel institutional</h3>
+          <div class="case-story">
+            <p>The brief was to build a professional website for a UK-registered forex broker. In financial services, the first thing a visitor evaluates isn't the design — it's whether the site feels trustworthy enough to put money near. That shaped every decision.</p>
+            <p>The site needed to cover forex pairs, commodities, indices, crypto, multiple account types, and an education section — all without overwhelming visitors. I structured the navigation so that different types of users (existing traders vs. new prospects) could each find what they needed without friction.</p>
+            <p>Built using WordPress and Elementor, with attention to page hierarchy, consistent section layouts, and a design that could scale as the broker adds more market offerings.</p>
+          </div>
+          <div class="case-pillars">
+            <div class="case-pillar">
+              <div class="case-pillar-label">Industry</div>
+              <div class="case-pillar-val">Fintech / Trading</div>
+            </div>
+            <div class="case-pillar">
+              <div class="case-pillar-label">Platform</div>
+              <div class="case-pillar-val">WordPress + Elementor</div>
+            </div>
+            <div class="case-pillar">
+              <div class="case-pillar-label">Type</div>
+              <div class="case-pillar-val">Multi-page informational</div>
+            </div>
+          </div>
+          <a href="https://callfx.com/" target="_blank" rel="noopener" class="case-link">Visit CallfX ↗</a>
+        </div>
+      </div>
+
+      <!-- Case 2: Sohent -->
+      <div class="case-item reverse reveal">
+        <div class="case-visual">
+          <div class="case-mock">
+            <div class="case-mock-bar">
+              <div class="mock-dot" style="background:#ff5f57;"></div>
+              <div class="mock-dot" style="background:#febc2e;"></div>
+              <div class="mock-dot" style="background:#28c840;"></div>
+              <div style="margin-left:10px;font-size:0.72rem;color:rgba(0,0,0,0.3);">sohent.in</div>
+            </div>
+            <div class="case-mock-body" style="background:#fafaf7;">
+              <div style="text-align:center;padding:4px 0 8px;">
+                <div style="display:inline-block;padding:4px 14px;background:#2a5f2a;border-radius:100px;font-size:0;height:14px;width:130px;margin-bottom:8px;opacity:0.8;"></div>
+                <div style="width:80%;height:8px;background:rgba(42,95,42,0.12);border-radius:3px;margin:0 auto;"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+                <div style="border-radius:10px;background:rgba(42,95,42,0.06);border:1px solid rgba(42,95,42,0.1);overflow:hidden;">
+                  <div style="height:48px;background:rgba(42,95,42,0.08);margin-bottom:4px;"></div>
+                  <div style="padding:6px;"><div style="height:6px;background:rgba(42,95,42,0.2);border-radius:3px;margin-bottom:3px;width:70%;"></div><div style="height:5px;background:rgba(42,95,42,0.1);border-radius:3px;width:50%;"></div></div>
+                </div>
+                <div style="border-radius:10px;background:rgba(139,90,43,0.06);border:1px solid rgba(139,90,43,0.1);overflow:hidden;">
+                  <div style="height:48px;background:rgba(139,90,43,0.08);margin-bottom:4px;"></div>
+                  <div style="padding:6px;"><div style="height:6px;background:rgba(139,90,43,0.2);border-radius:3px;margin-bottom:3px;width:70%;"></div><div style="height:5px;background:rgba(139,90,43,0.1);border-radius:3px;width:50%;"></div></div>
+                </div>
+                <div style="border-radius:10px;background:rgba(212,160,23,0.06);border:1px solid rgba(212,160,23,0.1);overflow:hidden;">
+                  <div style="height:48px;background:rgba(212,160,23,0.08);margin-bottom:4px;"></div>
+                  <div style="padding:6px;"><div style="height:6px;background:rgba(212,160,23,0.2);border-radius:3px;margin-bottom:3px;width:70%;"></div><div style="height:5px;background:rgba(212,160,23,0.1);border-radius:3px;width:50%;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-info">
+          <span class="case-label">E-Commerce · Sohent</span>
+          <h3 class="case-title">Getting a natural foods brand ready to sell online</h3>
+          <div class="case-story">
+            <p>Sohent sells cold-pressed oils, premium spices, and seeds — products where trust in quality matters as much as the price. The challenge was building an online store that reflected that quality rather than looking like a generic WooCommerce template.</p>
+            <p>I set up the full WooCommerce infrastructure: product categories, individual product pages, a cart and checkout flow, and a first-order discount that activates automatically. The slider-based homepage made it easy to feature seasonal products or promotions without touching the code.</p>
+            <p>The design palette stayed earthy and clean — nothing that would distract from the product photography or undercut the brand's "healthy and natural" positioning.</p>
+          </div>
+          <div class="case-pillars">
+            <div class="case-pillar">
+              <div class="case-pillar-label">Industry</div>
+              <div class="case-pillar-val">Natural Foods</div>
+            </div>
+            <div class="case-pillar">
+              <div class="case-pillar-label">Platform</div>
+              <div class="case-pillar-val">WooCommerce</div>
+            </div>
+            <div class="case-pillar">
+              <div class="case-pillar-label">Type</div>
+              <div class="case-pillar-val">E-Commerce store</div>
+            </div>
+          </div>
+          <a href="https://www.sohent.in/" target="_blank" rel="noopener" class="case-link">Visit Sohent ↗</a>
+        </div>
+      </div>
+
+      <!-- Case 3: NextStep App -->
+      <div class="case-item reveal">
+        <div class="case-visual">
+          <div class="case-mock">
+            <div class="case-mock-bar">
+              <div class="mock-dot" style="background:#ff5f57;"></div>
+              <div class="mock-dot" style="background:#febc2e;"></div>
+              <div class="mock-dot" style="background:#28c840;"></div>
+              <div style="margin-left:10px;font-size:0.72rem;color:rgba(255,255,255,0.3);">NextStep App</div>
+            </div>
+            <div class="case-mock-body" style="background:#0f172a;flex-direction:row;gap:8px;">
+              <div style="width:64px;border-radius:8px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:10px;flex-shrink:0;">
+                <div style="width:28px;height:28px;border-radius:8px;background:rgba(99,102,241,0.5);"></div>
+                <div style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.07);"></div>
+                <div style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.07);"></div>
+                <div style="width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,0.07);"></div>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:8px;">
+                <div style="height:24px;border-radius:6px;background:rgba(99,102,241,0.15);display:flex;align-items:center;padding:0 8px;">
+                  <div style="width:50%;height:7px;background:rgba(255,255,255,0.2);border-radius:3px;"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;flex:1;">
+                  <div style="border-radius:8px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.15);"></div>
+                  <div style="border-radius:8px;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);"></div>
+                  <div style="border-radius:8px;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);"></div>
+                  <div style="border-radius:8px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.15);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="case-info">
+          <span class="case-label">Android · NextStep App</span>
+          <h3 class="case-title">A learning tracker that doesn't feel like homework</h3>
+          <div class="case-story">
+            <p>NextStep was my TYCs project — a full Android application built to help students track learning goals while staying engaged through mini-games. The brief I set myself was simple: make something a student would actually open more than once.</p>
+            <p>The entire UI was designed and built independently using Kotlin and XML. Firebase Authentication handles sign-in, and Cloud Firestore stores user progress in real time. The mini-game layer was where the interesting UX decisions lived — figuring out how to reward progress without turning the tracker into a distraction.</p>
+            <p>The project gave me hands-on experience with mobile UI patterns, real-time data sync, and building something end-to-end without a team.</p>
+          </div>
+          <div class="case-pillars">
+            <div class="case-pillar">
+              <div class="case-pillar-label">Platform</div>
+              <div class="case-pillar-val">Android (Kotlin)</div>
+            </div>
+            <div class="case-pillar">
+              <div class="case-pillar-label">Backend</div>
+              <div class="case-pillar-val">Firebase + Firestore</div>
+            </div>
+            <div class="case-pillar">
+              <div class="case-pillar-label">Type</div>
+              <div class="case-pillar-val">Mobile Application</div>
+            </div>
+          </div>
+          <a href="https://github.com/kanchan12285/NextStep-App" target="_blank" rel="noopener" class="case-link">View on GitHub ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section">
+  <div class="container">
+    <span class="section-label reveal">How I work</span>
+    <h2 class="section-title reveal">From first call to live website</h2>
+    <p class="section-sub reveal">A consistent approach that keeps projects moving without unnecessary back-and-forth.</p>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div class="process-icon">🔍</div>
+        <div class="process-name">Discovery</div>
+        <div class="process-desc">Understanding the business, its users, and what the website actually needs to do — before touching a theme or plugin.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div class="process-icon">🗂️</div>
+        <div class="process-name">Planning</div>
+        <div class="process-desc">Sitemap, page structure, feature list. Deciding the right stack before building anything avoids expensive pivots later.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div class="process-icon">🔨</div>
+        <div class="process-name">Building</div>
+        <div class="process-desc">WordPress setup, theme configuration, custom sections via Elementor or Gutenberg, WooCommerce if the project needs it.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">04</div>
+        <div class="process-icon">🧪</div>
+        <div class="process-name">Testing</div>
+        <div class="process-desc">Mobile responsiveness, page speed, form functionality, link checking — on real devices, not just browser dev tools.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">05</div>
+        <div class="process-icon">🚀</div>
+        <div class="process-name">Launch</div>
+        <div class="process-desc">cPanel deployment, DNS configuration, SSL, and a final walkthrough with the client before going live.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-num">06</div>
+        <div class="process-icon">⚙️</div>
+        <div class="process-name">Maintenance</div>
+        <div class="process-desc">Plugin updates, content changes, performance monitoring, Google Search Console checks. The job doesn't end at launch.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" class="section">
+  <div class="container">
+    <span class="section-label reveal">Tools & Technologies</span>
+    <h2 class="section-title reveal">What I actually use</h2>
+    <p class="section-sub reveal">Chosen because they solve real problems for real clients — not because they looked good on a resume.</p>
+    <div class="tools-grid reveal">
+      <div class="tool-card"><div class="tool-icon">🟦</div><div class="tool-name">WordPress</div><div class="tool-cat">CMS</div></div>
+      <div class="tool-card"><div class="tool-icon">🛒</div><div class="tool-name">WooCommerce</div><div class="tool-cat">E-Commerce</div></div>
+      <div class="tool-card"><div class="tool-icon">⚡</div><div class="tool-name">Elementor</div><div class="tool-cat">Page Builder</div></div>
+      <div class="tool-card"><div class="tool-icon">🧱</div><div class="tool-name">Gutenberg</div><div class="tool-cat">Block Editor</div></div>
+      <div class="tool-card"><div class="tool-icon">🎨</div><div class="tool-name">Nexter</div><div class="tool-cat">WP Theme</div></div>
+      <div class="tool-card"><div class="tool-icon">✏️</div><div class="tool-name">Brizy</div><div class="tool-cat">Page Builder</div></div>
+      <div class="tool-card"><div class="tool-icon">🔥</div><div class="tool-name">Firebase</div><div class="tool-cat">Backend</div></div>
+      <div class="tool-card"><div class="tool-icon">🗄️</div><div class="tool-name">MySQL</div><div class="tool-cat">Database</div></div>
+      <div class="tool-card"><div class="tool-icon">🐍</div><div class="tool-name">Python</div><div class="tool-cat">Scripting</div></div>
+      <div class="tool-card"><div class="tool-icon">🤖</div><div class="tool-name">Automation Anywhere</div><div class="tool-cat">RPA</div></div>
+      <div class="tool-card"><div class="tool-icon">🔗</div><div class="tool-name">Make.com</div><div class="tool-cat">Automation</div></div>
+      <div class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Google Search Console</div><div class="tool-cat">SEO</div></div>
+      <div class="tool-card"><div class="tool-icon">🌐</div><div class="tool-name">cPanel</div><div class="tool-cat">Hosting</div></div>
+      <div class="tool-card"><div class="tool-icon">📱</div><div class="tool-name">Kotlin</div><div class="tool-cat">Android</div></div>
+      <div class="tool-card"><div class="tool-icon">🐙</div><div class="tool-name">GitHub</div><div class="tool-cat">Version Control</div></div>
+      <div class="tool-card"><div class="tool-icon">🎨</div><div class="tool-name">Canva</div><div class="tool-cat">Design</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section">
+  <div class="container">
+    <span class="section-label reveal">Experience</span>
+    <h2 class="section-title reveal">Where the work got done</h2>
+    <div class="exp-list">
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-date">Nov 2025 — Present</div>
+        </div>
+        <div>
+          <div class="exp-role">Web Developer</div>
+          <div class="exp-company">ILoopworld · Kandivali, Mumbai</div>
+          <ul class="exp-points">
+            <li>Built and maintained 25+ live client websites across industries including trading, healthcare, coaching, e-commerce, and professional services.</li>
+            <li>Handled complete project lifecycle from requirements gathering through deployment using WordPress, WooCommerce, Elementor, and cPanel.</li>
+            <li>Implemented e-commerce functionality, custom page layouts, contact and lead-capture forms, and mobile-responsive design across all projects.</li>
+            <li>Managed Google Search Console setups and basic SEO configurations for client sites post-launch.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item reveal">
+        <div>
+          <div class="exp-date">Sep 2024 — May 2025</div>
+        </div>
+        <div>
+          <div class="exp-role">Virtual Assistant (Part-Time)</div>
+          <div class="exp-company">Hire My Assistance · Goregaon, Mumbai</div>
+          <ul class="exp-points">
+            <li>Managed 20+ client queries daily, learning to communicate clearly under volume and maintain quality across interactions.</li>
+            <li>Improved response turnaround time by 30% through process optimisation and prioritisation.</li>
+            <li>Developed strong client-handling skills that now directly inform how I scope and communicate web projects.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;" class="reveal">
+      <h3 style="font-family:var(--font-display);font-size:1.1rem;font-weight:600;margin-bottom:20px;">Education</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;gap:20px;align-items:baseline;flex-wrap:wrap;">
+          <span style="font-size:0.8rem;color:var(--muted);min-width:100px;">2023 – 2026</span>
+          <span style="font-size:0.9rem;">B.Sc. Computer Science — Patkar-Varde College, Mumbai University <span style="color:var(--muted);font-size:0.8rem;">(CGPA 7.93)</span></span>
+        </div>
+        <div style="display:flex;gap:20px;align-items:baseline;flex-wrap:wrap;">
+          <span style="font-size:0.8rem;color:var(--muted);min-width:100px;">2021 – 2023</span>
+          <span style="font-size:0.9rem;">HSC (Science + IT) — Thakur Vidya Mandir Junior College</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="contact-blob"></div>
+  <div class="container">
+    <div class="contact-inner">
+      <div class="reveal">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Let's work together</h2>
+        <p class="section-sub">I'm currently available for freelance projects and open to the right full-time opportunity. Drop me a message and I'll get back to you within a day.</p>
+        <div class="contact-links" style="margin-top:36px;">
+          <a href="mailto:bijam64@gmail.com" class="contact-link-item">
+            <div class="contact-link-icon">✉️</div>
+            <div class="contact-link-text">
+              <span class="clt-label">Email</span>
+              <span class="clt-val">bijam64@gmail.com</span>
+            </div>
+          </a>
+          <a href="tel:+919967029332" class="contact-link-item">
+            <div class="contact-link-icon">📞</div>
+            <div class="contact-link-text">
+              <span class="clt-label">Phone</span>
+              <span class="clt-val">+91 9967029332</span>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/kanchan-bijam-301b102a3" target="_blank" rel="noopener" class="contact-link-item">
+            <div class="contact-link-icon">💼</div>
+            <div class="contact-link-text">
+              <span class="clt-label">LinkedIn</span>
+              <span class="clt-val">kanchan-bijam-301b102a3</span>
+            </div>
+          </a>
+          <a href="https://github.com/kanchan12285/NextStep-App" target="_blank" rel="noopener" class="contact-link-item">
+            <div class="contact-link-icon">🐙</div>
+            <div class="contact-link-text">
+              <span class="clt-label">GitHub</span>
+              <span class="clt-val">kanchan12285</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="field-wrap">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+            </div>
+            <div class="field-wrap">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+            </div>
+          </div>
+          <div class="field-wrap">
+            <label for="subject">What's this about?</label>
+            <input type="text" id="subject" name="subject" placeholder="New website / WordPress help / Automation">
+          </div>
+          <div class="field-wrap">
+            <label for="message">Tell me more</label>
+            <textarea id="message" name="message" rows="5" placeholder="A bit about your project or what you need help with..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="align-self:flex-start;">
+            Send message
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div id="form-msg" style="display:none;font-size:0.875rem;color:#a78bfa;margin-top:8px;"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Kanchan Bijam · Web Developer · Mumbai, India</p>
+</footer>
+
+<script>
+// ===================== NAV =====================
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+function closeMobile() { mobileMenu.classList.remove('open'); }
+
+// ===================== SCROLL REVEAL =====================
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => io.observe(el));
+
+// ===================== COUNTERS =====================
+const counters = document.querySelectorAll('.stat-val[data-target]');
+const counterIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const step = Math.ceil(target / 40);
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = current + '+';
+        if (current >= target) clearInterval(timer);
+      }, 40);
+      counterIO.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => counterIO.observe(c));
+
+// ===================== FILTER =====================
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.project-card');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    cards.forEach(card => {
+      const match = filter === 'all' || card.dataset.category === filter;
+      card.style.display = match ? 'block' : 'none';
+    });
+  });
+});
+
+// ===================== FORM =====================
+function handleSubmit(e) {
+  e.preventDefault();
+  const msg = document.getElementById('form-msg');
+  msg.style.display = 'block';
+  msg.textContent = 'Message sent! I\'ll get back to you within 24 hours.';
+  e.target.reset();
+}
+
+// ===================== ACTIVE NAV =====================
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 200) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
+  });
+}, { passive: true });
+</script>
 </body>
 </html>
